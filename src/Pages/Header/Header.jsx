@@ -75,7 +75,7 @@ const Header = () => {
   );
   return (
     <>
-      <div className="py-4 overflow-hidden">
+      <div className="py-2 overflow-hidden">
         <div className="container-2">
           <div className="flex justify-between items-center gap-6">
             <div className="">
@@ -92,7 +92,7 @@ const Header = () => {
                 <IoSearch className="text-[24px]" />
               </span>
               <div className="">
-                <button className="cursor-pointer border-2 rounded-lg px-6 py-2 font-semibold text-primary">
+                <button className="cursor-pointer border-2 rounded-lg px-6 py-2 font-semibold text-primary1">
                   Appointment
                 </button>
               </div>

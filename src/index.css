@@ -185,7 +185,7 @@
   }
 
   input:checked + div {
-    @apply border-primary;
+    @apply border-primary1;
   }
 
   input:checked + div svg {
