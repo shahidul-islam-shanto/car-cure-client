@@ -47,6 +47,14 @@ const Header = () => {
           Contact
         </NavLink>
       </li>
+      <li>
+        <NavLink
+          to={"/login"}
+          className={({ isActive }) => (isActive ? "active" : "")}
+        >
+          Login
+        </NavLink>
+      </li>
       {/* {user?.email ? (
         <>
           <li>
