@@ -1,11 +1,29 @@
-import React from "react";
+import React, { useContext } from "react";
 import login from "../../assets/images/login/login.svg";
 import { FaFacebookF } from "react-icons/fa";
 import { FaLinkedinIn } from "react-icons/fa6";
 import { FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const Register = () => {
+  const { createUser } = useContext(AuthContext);
+
+  const handleRegister = (e) => {
+    e.preventDefault();
+
+    const from = e.target;
+    const email = from.email.value;
+    const password = from.password.value;
+
+    createUser(email, password)
+      .then((result) => {
+        console.log(result.user);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
   return (
     <>
       <div className="bg-nu10 py-20">
@@ -19,11 +37,24 @@ const Register = () => {
             <div className="col-span-6">
               <div className=" flex items-center justify-center">
                 <div className="border-2 border-nu60 rounded-2xl px-10 py-10 w-full max-w-2xl space-y-4">
-                  <form className="">
+                  <form onSubmit={handleRegister} className="">
                     <h1 className="text-xl font-bold mb-6 text-center">
                       Register your account
                     </h1>
-
+                    <div>
+                      <label
+                        htmlFor="name"
+                        className="block mb-1 font-semibold"
+                      >
+                        Name
+                      </label>
+                      <input
+                        type="text"
+                        name="name"
+                        placeholder="Enter your Name..."
+                        className="w-full px-3 py-2 mb-4 border border-nu60 placeholder:text-nu20 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none"
+                      />
+                    </div>
                     {/* Email */}
                     <div>
                       <label

@@ -1,11 +1,29 @@
-import React from "react";
+import React, { useContext } from "react";
 import login from "../../assets/images/login/login.svg";
 import { FaFacebookF } from "react-icons/fa";
 import { FaLinkedinIn } from "react-icons/fa6";
 import { FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const Login = () => {
+  const { singEmailPassword } = useContext(AuthContext);
+
+  const handleSingIn = (e) => {
+    e.preventDefault();
+
+    const from = e.target;
+    const email = from.email.value;
+    const password = from.password.value;
+
+    singEmailPassword(email, password)
+      .then((result) => {
+        console.log(result.user);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
   return (
     <>
       <div className="bg-nu10 py-20">
@@ -19,7 +37,7 @@ const Login = () => {
             <div className="col-span-6">
               <div className=" flex items-center justify-center">
                 <div className="border-2 border-nu60 rounded-2xl px-10 py-10 w-full max-w-2xl space-y-4">
-                  <form className="">
+                  <form onSubmit={handleSingIn} className="">
                     <h1 className="text-xl mb-6 font-bold text-center">
                       Login your account
                     </h1>
