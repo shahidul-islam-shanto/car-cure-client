@@ -147,13 +147,16 @@ const Header = () => {
                   isOpen ? "max-h-96 py-4" : "max-h-0 py-0"
                 }`} */}
               <div
-                className={`lg:hidden bg-nu10 transition-all duration-500 overflow-hidden ${
+                className={`lg:hidden bg-nu10  duration-300 overflow-hidden ${
                   isOpen ? "h-full py-32" : "max-h-0 py-0"
                 }`}
               >
-                <ul className="flex flex-col h-[100vh] items-center">
+                <ul className="flex flex-col h-screen items-center">
                   <li className="mb-4">
-                    <Link to={"/"} className="hover:text-indigo-400 transition text-[24px]">
+                    <Link
+                      to={"/"}
+                      className="hover:text-indigo-400 transition text-[24px]"
+                    >
                       Home
                     </Link>
                   </li>

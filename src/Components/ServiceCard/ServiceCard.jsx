@@ -14,7 +14,7 @@ const ServiceCard = ({ services }) => {
         <div className="flex justify-between items-center">
           <p className="text-primary1">Price: ${price}</p>
           <div className="">
-            <Link to={`/servicesCreate/:${_id}`}>
+            <Link to={`/servicesDetails/${_id}`}>
               <button>
                 <FaArrowRight className="text-[18px]" />
               </button>
