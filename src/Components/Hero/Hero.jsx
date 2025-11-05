@@ -22,39 +22,41 @@ import { Autoplay } from "swiper/modules";
 const Hero = () => {
   return (
     <>
-      <Swiper
-        spaceBetween={30}
-        centeredSlides={true}
-        autoplay={{
-          delay: 2500,
-          disableOnInteraction: false,
-        }}
-        Pagination={{
-          clickable: true,
-        }}
-        effect={"fade"}
-        modules={[EffectFade, Autoplay]}
-        className="mySwiper"
-      >
-        <SwiperSlide>
-          <img className="w-full h-screen bg-cover" src={banner1} />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img className="w-full h-screen bg-cover" src={banner2} />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img className="w-full h-screen bg-cover" src={banner3} />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img className="w-full h-screen bg-cover" src={banner4} />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img className="w-full h-screen bg-cover" src={banner5} />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img className="w-full h-screen bg-cover" src={banner6} />
-        </SwiperSlide>
-      </Swiper>
+      <div className="relative z-10">
+        <Swiper
+          spaceBetween={30}
+          centeredSlides={true}
+          autoplay={{
+            delay: 2500,
+            disableOnInteraction: false,
+          }}
+          Pagination={{
+            clickable: true,
+          }}
+          effect={"fade"}
+          modules={[EffectFade, Autoplay]}
+          className="mySwiper"
+        >
+          <SwiperSlide>
+            <img className="w-full h-screen bg-cover" src={banner1} />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img className="w-full h-screen bg-cover" src={banner2} />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img className="w-full h-screen bg-cover" src={banner3} />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img className="w-full h-screen bg-cover" src={banner4} />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img className="w-full h-screen bg-cover" src={banner5} />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img className="w-full h-screen bg-cover" src={banner6} />
+          </SwiperSlide>
+        </Swiper>
+      </div>
     </>
   );
 };

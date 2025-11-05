@@ -5,7 +5,7 @@ import ServicesSection from "../../Components/ServicesSection/ServicesSection";
 
 const Home = () => {
   return (
-    <div>
+    <div className="">
       <Hero />
       <AboutSection />
       <ServicesSection />
