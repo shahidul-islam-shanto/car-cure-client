@@ -2,6 +2,8 @@ import React from "react";
 import { useLoaderData } from "react-router-dom";
 import "./ServicesDetails.css";
 import BredCrumb from "../../Components/BredCrumb/BredCrumb";
+import VideoPopup from "../../Components/VideoPopup/VideoPopup";
+import Text from "../../Components/VideoPopup/Text";
 
 const ServicesDetails = () => {
   const serviceDetails = useLoaderData();
@@ -114,32 +116,48 @@ const ServicesDetails = () => {
                                 01
                               </h5>
                             </div>
-                            <h5 className="text-[20px] text-nu20 font-bold mb-3">Step One</h5>
-                            <p className="text-nu30 font-medium">It uses a dictionary of over 200 .</p>
+                            <h5 className="text-[20px] text-nu20 font-bold mb-3">
+                              Step One
+                            </h5>
+                            <p className="text-nu30 font-medium">
+                              It uses a dictionary of over 200 .
+                            </p>
                           </div>
                         </div>
-                         <div className="col-span-4">
+                        <div className="col-span-4">
                           <div className="border-t-2 border-nu50 rounded-xl px-6 py-6 text-center">
                             <div className="px-3 py-3 bg-[#FF38111A] inline-block rounded-full mb-3">
                               <h5 className="px-3 py-2 bg-primary1 rounded-full text-nu10 font-bold">
                                 02
                               </h5>
                             </div>
-                            <h5 className="text-[20px] text-nu20 font-bold mb-3">Step Two</h5>
-                            <p className="text-nu30 font-medium">It uses a dictionary of over 200 .</p>
+                            <h5 className="text-[20px] text-nu20 font-bold mb-3">
+                              Step Two
+                            </h5>
+                            <p className="text-nu30 font-medium">
+                              It uses a dictionary of over 200 .
+                            </p>
                           </div>
                         </div>
-                         <div className="col-span-4">
+                        <div className="col-span-4">
                           <div className="border-t-2 border-nu50 rounded-xl px-6 py-6 text-center">
                             <div className="px-3 py-3 bg-[#FF38111A] inline-block rounded-full mb-3">
                               <h5 className="px-3 py-2 bg-primary1 rounded-full text-nu10 font-bold">
                                 03
                               </h5>
                             </div>
-                            <h5 className="text-[20px] text-nu20 font-bold mb-3">Step Three</h5>
-                            <p className="text-nu30 font-medium">It uses a dictionary of over 200 .</p>
+                            <h5 className="text-[20px] text-nu20 font-bold mb-3">
+                              Step Three
+                            </h5>
+                            <p className="text-nu30 font-medium">
+                              It uses a dictionary of over 200 .
+                            </p>
                           </div>
                         </div>
+                      </div>
+                      <div className="">
+                        <VideoPopup />
+                      
                       </div>
                     </div>
                   </div>
