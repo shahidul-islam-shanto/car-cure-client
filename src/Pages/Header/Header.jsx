@@ -7,6 +7,7 @@ import { FaCaretDown } from "react-icons/fa";
 import { IoMenu } from "react-icons/io5";
 import { IoClose } from "react-icons/io5";
 import { AuthContext } from "../../Provider/AuthProvider";
+import { ToastContainer, toast } from "react-toastify";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,9 +18,11 @@ const Header = () => {
   };
 
   const handleLogOut = () => {
+    const notify = () => toast("Wow so easy !");
     logOut()
       .then((result) => {
         console.log(result.user);
+        notify();
       })
       .catch((error) => {
         console.error(error);

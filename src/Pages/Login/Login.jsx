@@ -5,6 +5,7 @@ import { FaLinkedinIn } from "react-icons/fa6";
 import { FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const { singEmailPassword } = useContext(AuthContext);
@@ -19,6 +20,11 @@ const Login = () => {
     singEmailPassword(email, password)
       .then((result) => {
         console.log(result.user);
+        Swal.fire({
+          title: "Login Successfully!",
+          icon: "success",
+          draggable: true,
+        });
       })
       .catch((error) => {
         console.error(error);
