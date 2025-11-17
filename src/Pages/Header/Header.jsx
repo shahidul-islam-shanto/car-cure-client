@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import logo from "../../assets/images/logo/logo.png";
 import { Link, NavLink } from "react-router-dom";
 import { IoSearch } from "react-icons/io5";
@@ -6,14 +6,25 @@ import { HiOutlineShoppingBag } from "react-icons/hi2";
 import { FaCaretDown } from "react-icons/fa";
 import { IoMenu } from "react-icons/io5";
 import { IoClose } from "react-icons/io5";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { user, logOut } = useContext(AuthContext);
 
   const handleMenuToggle = () => {
     setIsOpen(!isOpen);
   };
 
+  const handleLogOut = () => {
+    logOut()
+      .then((result) => {
+        console.log(result.user);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
   const navBer = (
     <>
       <li>
@@ -56,15 +67,7 @@ const Header = () => {
           Contact
         </NavLink>
       </li>
-      <li>
-        <NavLink
-          to={"/login"}
-          className={({ isActive }) => (isActive ? "active" : "")}
-        >
-          Login
-        </NavLink>
-      </li>
-      {/* {user?.email ? (
+      {user?.email ? (
         <>
           <li>
             <NavLink
@@ -87,7 +90,7 @@ const Header = () => {
             Login
           </NavLink>
         </li>
-      )} */}
+      )}
     </>
   );
   return (
@@ -143,9 +146,7 @@ const Header = () => {
               </div>
 
               {/* Mobile Dropdown Menu */}
-              {/* {`lg:hidden bg-nu10 transition-all duration-300 overflow-hidden ${
-                  isOpen ? "max-h-96 py-4" : "max-h-0 py-0"
-                }`} */}
+
               <div
                 className={`lg:hidden bg-nu10  duration-300 overflow-hidden ${
                   isOpen ? "h-full py-32" : "max-h-0 py-0"
