@@ -29,8 +29,8 @@ export default function VideoPopup() {
           to={"https://www.youtube.com/watch?v=dQw4w9WgXcQ"}
           className="video-popup"
         >
-          <div className="flex items-center justify-center h-screen bg-gray-700">
-            <div className="w-4 h-4 rounded-full bg-ripple animate-ripple">
+          <div className="flex items-center justify-center">
+            <div className="w-full h-full rounded-full bg-ripple animate-ripple">
               <img className="w-full h-full" src={Icon} alt="" />
             </div>
           </div>

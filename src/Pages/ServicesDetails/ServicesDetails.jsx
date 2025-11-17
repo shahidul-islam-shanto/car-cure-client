@@ -1,5 +1,5 @@
 import React from "react";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import "./ServicesDetails.css";
 import BredCrumb from "../../Components/BredCrumb/BredCrumb";
 import VideoPopup from "../../Components/VideoPopup/VideoPopup";
@@ -8,7 +8,7 @@ import Text from "../../Components/VideoPopup/Text";
 const ServicesDetails = () => {
   const serviceDetails = useLoaderData();
 
-  const { img } = serviceDetails;
+  const { _id, img, price } = serviceDetails;
 
   return (
     <>
@@ -108,7 +108,7 @@ const ServicesDetails = () => {
                         use a passage of Lorem Ipsum, you need to be sure there
                         isn't anything embarrassing hidden in the middle of text
                       </p>
-                      <div className="grid grid-cols-12 gap-6">
+                      <div className="grid grid-cols-12 gap-6 mb-10">
                         <div className="col-span-4">
                           <div className="border-t-2 border-nu50 rounded-xl px-6 py-6 text-center">
                             <div className="px-3 py-3 bg-[#FF38111A] inline-block rounded-full mb-3">
@@ -157,9 +157,22 @@ const ServicesDetails = () => {
                       </div>
                       <div className="">
                         <VideoPopup />
-                      
                       </div>
                     </div>
+                  </div>
+                </div>
+              </div>
+              <div className="col-span-4">
+                <div className="">
+                  <div className="mb-[30px]">
+                    <h3 className="text-primary1">Price: ${price}</h3>
+                  </div>
+                  <div className="">
+                    <Link to={_id}>
+                      <button className="px-4 py-2 bg-primary1 text-nu10 rounded-lg">
+                        Proceed Checkout
+                      </button>
+                    </Link>
                   </div>
                 </div>
               </div>
