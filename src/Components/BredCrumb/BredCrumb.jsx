@@ -2,7 +2,7 @@ import React from "react";
 import "./BredCrumb.css";
 import checkout from "../../assets/images/checkout/checkout.png";
 
-const BredCrumb = () => {
+const BredCrumb = ({ bradCrumb }) => {
   return (
     <>
       <div className="">
@@ -12,7 +12,7 @@ const BredCrumb = () => {
         </div>
         <div className="">
           <h1 className="absolute top-80 left-60 text-nu10 text-center">
-            Service Details
+            {bradCrumb}
           </h1>
         </div>
       </div>

@@ -11,6 +11,7 @@ import Blog from "../Pages/Blog/Blog";
 import Contact from "../Pages/Contact/Contact";
 import ServicesDetails from "../Pages/ServicesDetails/ServicesDetails";
 import MyBookings from "../Pages/MyBookings/MyBookings";
+import CheckOut from "../Pages/CheckOut/CheckOut";
 
 const router = createBrowserRouter([
   {
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
       {
         path: "/servicesCreate/:id",
         element: <ServicesCreate />,
+      },
+      {
+        path: "/checkOut",
+        element: <CheckOut />,
       },
       {
         path: "/blog",
