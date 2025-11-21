@@ -160,7 +160,7 @@ const ServicesDetails = () => {
                   <h3 className="text-primary1">Price: ${price}</h3>
                 </div>
                 <div className="">
-                  <Link to={"/checkOut"}>
+                  <Link to={`/checkOut/${_id}`}>
                     <button className="px-4 py-2 bg-primary1 text-nu10 rounded-lg">
                       Proceed Checkout
                     </button>
