@@ -1,8 +1,10 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import BredCrumb from "../../Components/BredCrumb/BredCrumb";
-import { Link, useLoaderData } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import "./CheckOut.css";
+import Swal from "sweetalert2";
+import { DayPicker } from "react-day-picker";
 
 const CheckOut = () => {
   const { title, price, img, service_id } = useLoaderData();
@@ -31,6 +33,25 @@ const CheckOut = () => {
       title: title,
     };
     console.log(order);
+
+    fetch("http://localhost:5000/bookings", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(order),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.insertedId) {
+          Swal.fire({
+            title: "Successfully!",
+            text: "added this new Location?!",
+            icon: "success",
+          });
+        }
+      });
   };
   return (
     <>
@@ -55,12 +76,13 @@ const CheckOut = () => {
                 />
               </div>
               <div className="col-span-6">
-                <input
+                {/* <input
                   type="date"
-                  name="number"
+                  name="date"
                   placeholder="Your Phone"
                   className=" w-full px-4 py-4 mb-4 bg-nu10 border border-nu60 placeholder:text-nu40 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none"
-                />
+                /> */}
+                <DayPicker mode="single" />
               </div>
               <div className="col-span-6">
                 <input
@@ -118,7 +140,7 @@ const CheckOut = () => {
             <div className="">
               <input
                 type="submit"
-                className="px-6 py-3 bg-primary1 rounded-xl w-full text-center text-nu10 font-semibold"
+                className="px-6 py-3 bg-primary1 rounded-xl w-full text-center text-nu10 font-semibold cursor-pointer"
               />
             </div>
           </form>
