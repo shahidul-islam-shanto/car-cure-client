@@ -18,7 +18,7 @@ const CheckOut = () => {
     const date = from.date.value;
     const number = from.number.value;
     const email = from.email.value;
-    const url = from.url.value;
+    // const url = from.url.value;
     const message = from.message.value;
     const title = from.title.value;
 
@@ -27,10 +27,11 @@ const CheckOut = () => {
       date: date,
       number: number,
       email: email,
-      service: service_id,
-      url: url,
+      service_id: service_id,
+      img: img,
       message: message,
       title: title,
+      price: price,
     };
     console.log(order);
 
@@ -76,13 +77,12 @@ const CheckOut = () => {
                 />
               </div>
               <div className="col-span-6">
-                {/* <input
+                <input
                   type="date"
                   name="date"
                   placeholder="Your Phone"
                   className=" w-full px-4 py-4 mb-4 bg-nu10 border border-nu60 placeholder:text-nu40 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none"
-                /> */}
-                <DayPicker mode="single" />
+                />
               </div>
               <div className="col-span-6">
                 <input
@@ -110,7 +110,7 @@ const CheckOut = () => {
                   className="w-full px-4 py-4 mb-4 bg-nu10 border border-nu60 placeholder:text-nu40 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none"
                 />
               </div>
-              <div className="col-span-6">
+              {/* <div className="col-span-6">
                 <input
                   type="text"
                   name="url"
@@ -118,7 +118,7 @@ const CheckOut = () => {
                   defaultValue={img}
                   className="w-full px-4 py-4 mb-4 bg-nu10 border border-nu60 placeholder:text-nu40 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none"
                 />
-              </div>
+              </div> */}
               <div className="col-span-6">
                 <input
                   type="number"
