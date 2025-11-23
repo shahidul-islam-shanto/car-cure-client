@@ -61,7 +61,7 @@ const CheckOut = () => {
       </div>
       <div className="xl:py-[130px] lg:py-[110px] md:py-[90px] sm:py-[70px] py-[60px]">
         <div className="container-2">
-          <h1>{title}</h1>
+       
           <form
             onSubmit={handleConfirmOrder}
             className="px-16 py-16 bg-nu60 rounded-2xl"

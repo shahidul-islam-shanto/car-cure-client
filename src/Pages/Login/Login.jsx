@@ -3,12 +3,14 @@ import login from "../../assets/images/login/login.svg";
 import { FaFacebookF } from "react-icons/fa";
 import { FaLinkedinIn } from "react-icons/fa6";
 import { FaGoogle } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
 
 const Login = () => {
   const { singEmailPassword } = useContext(AuthContext);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const handleSingIn = (e) => {
     e.preventDefault();
@@ -20,6 +22,7 @@ const Login = () => {
     singEmailPassword(email, password)
       .then((result) => {
         console.log(result.user);
+        navigate(location?.state ? location?.state : "/");
         Swal.fire({
           title: "Login Successfully!",
           icon: "success",
