@@ -4,7 +4,7 @@ import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import "./CheckOut.css";
 import Swal from "sweetalert2";
-import { DayPicker } from "react-day-picker";
+
 
 const CheckOut = () => {
   const { title, price, img, service_id } = useLoaderData();

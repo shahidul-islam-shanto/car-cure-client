@@ -1,13 +1,22 @@
 import React from "react";
 import { IoCloseOutline } from "react-icons/io5";
 
-const TableBooks = ({ bookings }) => {
-  const { img, customerName, title, price, date, email } = bookings;
+const TableBooks = ({
+  bookings,
+  handleDeleteBookings,
+  handleConfirmBooking,
+}) => {
+  const { _id, img, customerName, title, price, date, email, status } =
+    bookings;
+
   return (
     <>
       <tr className="">
         <th>
-          <button className="px-2 py-2 bg-nu20 inline-block rounded-full">
+          <button
+            onClick={() => handleDeleteBookings(_id)}
+            className="px-2 py-2 bg-nu20 inline-block rounded-full"
+          >
             <IoCloseOutline className="text-nu10 text-[24px] font-bold" />
           </button>
         </th>
@@ -38,7 +47,23 @@ const TableBooks = ({ bookings }) => {
         <td>
           <p>{date}</p>
         </td>
-        <td>Purple</td>
+        <td>
+          {status === "Confirm" ? (
+            <button className="px-4 py-2 bg-green-600 rounded-md text-nu10">
+              Confrim
+            </button>
+          ) : (
+            <button
+              onClick={() => {
+                console.log(_id);
+                handleConfirmBooking(_id);
+              }}
+              className="px-4 py-2 bg-primary1 rounded-md text-nu10"
+            >
+              Pending
+            </button>
+          )}
+        </td>
       </tr>
     </>
   );

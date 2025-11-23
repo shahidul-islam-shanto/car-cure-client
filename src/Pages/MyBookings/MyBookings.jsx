@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import TableBooks from "../../Components/TableBooks/TableBooks";
+import BredCrumb from "../../Components/BredCrumb/BredCrumb";
 
 const MyBookings = () => {
   const { user } = useContext(AuthContext);
@@ -15,35 +16,68 @@ const MyBookings = () => {
         console.log(data);
         setBookings(data);
       });
-  }, []);
+  }, [url]);
+
+  const handleDeleteBookings = (id) => {
+    const proceed = confirm("Are you sure this delete");
+    if (proceed) {
+      fetch(`http://localhost:5000/bookings/${id}`, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          if (data.deletedCount > 0) {
+            alert("item delete");
+            const remaining = bookings.filter((items) => items._id !== id);
+            setBookings(remaining);
+          }
+        });
+    }
+  };
+
+  const handleConfirmBooking = (id) => {
+    fetch(`http://localhost:5000/bookings/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ status: "Confirm" }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.modifiedCount > 0) {
+          // states
+          const remaining = bookings.filter((items) => items._id !== id);
+          const update = bookings.find((items) => items._id === id);
+          update.status = "Confirm";
+          const newBooking = [update, ...remaining];
+          setBookings(newBooking);
+        }
+      });
+  };
 
   return (
-    <div>
-      <h1>this is my bookings: {bookings.length}</h1>
-      <div className="py-20">
+    <>
+      <BredCrumb bradCrumb={"Card Details"} />
+      <div className="py-40">
         <div className="container-2">
-          <div className="overflow-x-auto">
-            <table className="table">
-              {/* head */}
-              {/* <thead>
-                <tr className="text-nu20">
-                  
-                  <th></th>
-                  <th>Name</th>
-                  <th>Price</th>
-                  <th>Date</th>
-                </tr>
-              </thead> */}
-              <tbody>
-                {bookings.map((items) => (
-                  <TableBooks key={items._id} bookings={items} />
-                ))}
-              </tbody>
-            </table>
-          </div>
+          <table className="table ">
+            <tbody className="">
+              {bookings.map((items) => (
+                <TableBooks
+                  key={items._id}
+                  bookings={items}
+                  handleDeleteBookings={handleDeleteBookings}
+                  handleConfirmBooking={handleConfirmBooking}
+                />
+              ))}
+            </tbody>
+          </table>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
