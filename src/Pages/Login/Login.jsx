@@ -6,6 +6,7 @@ import { FaGoogle } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 const Login = () => {
   const { singEmailPassword } = useContext(AuthContext);
@@ -22,7 +23,19 @@ const Login = () => {
     singEmailPassword(email, password)
       .then((result) => {
         console.log(result.user);
-        navigate(location?.state ? location?.state : "/");
+        const logInUser = result.user;
+        console.log(logInUser);
+
+        const user = { email };
+        axios
+          .post("http://localhost:5000/jwt", user, { withCredentials: true })
+          .then((res) => {
+            console.log(res.data);
+            if (res.data.success) {
+              navigate(location?.state ? location?.state : "/");
+            }
+          });
+
         Swal.fire({
           title: "Login Successfully!",
           icon: "success",

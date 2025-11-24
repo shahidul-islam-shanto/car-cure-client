@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import TableBooks from "../../Components/TableBooks/TableBooks";
 import BredCrumb from "../../Components/BredCrumb/BredCrumb";
+import axios from "axios";
 
 const MyBookings = () => {
   const { user } = useContext(AuthContext);
@@ -10,12 +11,15 @@ const MyBookings = () => {
   const url = `http://localhost:5000/bookings?email=${user?.email}`;
 
   useEffect(() => {
-    fetch(url)
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        setBookings(data);
-      });
+    axios.get(url, {withCredentials: true}).then((res) => {
+      setBookings(res.data);
+    });
+    // fetch(url)
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     console.log(data);
+    //     setBookings(data);
+    //   });
   }, [url]);
 
   const handleDeleteBookings = (id) => {
