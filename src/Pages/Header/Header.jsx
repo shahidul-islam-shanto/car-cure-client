@@ -1,17 +1,16 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import logo from "../../assets/images/logo/logo.png";
 import { Link, NavLink } from "react-router-dom";
 import { IoSearch } from "react-icons/io5";
 import { HiOutlineShoppingBag } from "react-icons/hi2";
-import { FaCaretDown } from "react-icons/fa";
 import { IoMenu } from "react-icons/io5";
 import { IoClose } from "react-icons/io5";
-import { AuthContext } from "../../Provider/AuthProvider";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
+import useAuth from "../../Hooks/useAuth";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { user, logOut } = useContext(AuthContext);
+  const { user, logOut } = useAuth();
 
   const handleMenuToggle = () => {
     setIsOpen(!isOpen);

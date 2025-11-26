@@ -30,9 +30,9 @@ const Hero = () => {
             delay: 2500,
             disableOnInteraction: false,
           }}
-          Pagination={{
-            clickable: true,
-          }}
+          // Pagination={{
+          //   clickable: true,
+          // }}
           effect={"fade"}
           modules={[EffectFade, Autoplay]}
           className="mySwiper"

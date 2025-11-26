@@ -6,6 +6,7 @@ import {
   onAuthStateChanged,
 } from "firebase/auth";
 import auth from "../firebase/firebase.config";
+import axios from "axios";
 
 export const AuthContext = createContext(null);
 
@@ -35,8 +36,30 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (allUser) => {
       console.log("current user observer", allUser);
+
+      const userEmail = allUser?.email || user?.email;
+      const loggerUser = { email: userEmail };
       setUser(allUser);
       setLoading(false);
+
+      // JWT token post
+      if (allUser) {
+        axios
+          .post("http://localhost:5000/jwt", loggerUser, {
+            withCredentials: true,
+          })
+          .then((res) => {
+            console.log("this Token", res.data);
+          });
+      } else {
+        axios
+          .post("http://localhost:5000/logout", loggerUser, {
+            withCredentials: true,
+          })
+          .then((res) => {
+            console.log(res.data);
+          });
+      }
     });
     return () => {
       unSubscribe();

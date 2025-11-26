@@ -1,15 +1,15 @@
-import React, { useContext } from "react";
 import login from "../../assets/images/login/login.svg";
 import { FaFacebookF } from "react-icons/fa";
 import { FaLinkedinIn } from "react-icons/fa6";
 import { FaGoogle } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
-import axios from "axios";
+import useAuth from "../../Hooks/useAuth";
+// import axios from "axios";
 
 const Login = () => {
-  const { singEmailPassword } = useContext(AuthContext);
+  const { singEmailPassword } = useAuth();
+
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -26,15 +26,17 @@ const Login = () => {
         const logInUser = result.user;
         console.log(logInUser);
 
-        const user = { email };
-        axios
-          .post("http://localhost:5000/jwt", user, { withCredentials: true })
-          .then((res) => {
-            console.log(res.data);
-            if (res.data.success) {
-              navigate(location?.state ? location?.state : "/");
-            }
-          });
+        navigate(location?.state ? location?.state : "/");
+
+        // const user = { email };
+        // axios
+        //   .post("http://localhost:5000/jwt", user, { withCredentials: true })
+        //   .then((res) => {
+        //     console.log(res.data);
+        //     if (res.data.success) {
+        //       navigate(location?.state ? location?.state : "/");
+        //     }
+        //   });
 
         Swal.fire({
           title: "Login Successfully!",
