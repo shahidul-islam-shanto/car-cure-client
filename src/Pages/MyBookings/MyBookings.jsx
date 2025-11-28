@@ -2,25 +2,39 @@ import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import TableBooks from "../../Components/TableBooks/TableBooks";
 import BredCrumb from "../../Components/BredCrumb/BredCrumb";
-import axios from "axios";
+// import axios from "axios";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 const MyBookings = () => {
   const { user } = useContext(AuthContext);
   const [bookings, setBookings] = useState([]);
+  const axiosSecure = useAxiosSecure();
 
-  const url = `http://localhost:5000/bookings?email=${user?.email}`;
+  // const url = `http://localhost:5000/bookings?email=${user?.email}`;
+  const url = `/bookings?email=${user?.email}`;
 
   useEffect(() => {
-    axios.get(url, { withCredentials: true }).then((res) => {
-      setBookings(res.data);
-    });
+    //** system 1 start */
     // fetch(url)
     //   .then((res) => res.json())
     //   .then((data) => {
     //     console.log(data);
     //     setBookings(data);
     //   });
-  }, [url]);
+    //** system 1 end */
+
+    //** system 2 start */
+    // axios.get(url, { withCredentials: true }).then((res) => {
+    //   setBookings(res.data);
+    // });
+    //** system 2 end */
+
+    //** system 3 start */
+    axiosSecure.get(url).then((res) => {
+      setBookings(res.data);
+    });
+    //** system 3 end */
+  }, [url, axiosSecure]);
 
   const handleDeleteBookings = (id) => {
     const proceed = confirm("Are you sure this delete");
