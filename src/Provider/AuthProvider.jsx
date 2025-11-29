@@ -45,7 +45,7 @@ const AuthProvider = ({ children }) => {
       // JWT token post
       if (allUser) {
         axios
-          .post("http://localhost:5000/jwt", loggerUser, {
+          .post("https://car-doctor-server-mauve.vercel.app/jwt", loggerUser, {
             withCredentials: true,
           })
           .then((res) => {
@@ -53,9 +53,13 @@ const AuthProvider = ({ children }) => {
           });
       } else {
         axios
-          .post("http://localhost:5000/logout", loggerUser, {
-            withCredentials: true,
-          })
+          .post(
+            "https://car-doctor-server-mauve.vercel.app/logout",
+            loggerUser,
+            {
+              withCredentials: true,
+            }
+          )
           .then((res) => {
             console.log(res.data);
           });

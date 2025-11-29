@@ -35,7 +35,9 @@ const router = createBrowserRouter([
         path: "/servicesDetails/:id",
         element: <ServicesDetails />,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/services/${params.id}`),
+          fetch(
+            `https://car-doctor-server-mauve.vercel.app/services/${params.id}`
+          ),
       },
       {
         path: "/servicesCreate/:id",
@@ -49,7 +51,9 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/services/${params.id}`),
+          fetch(
+            `https://car-doctor-server-mauve.vercel.app/services/${params.id}`
+          ),
       },
       {
         path: "/blog",

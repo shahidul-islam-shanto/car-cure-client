@@ -10,7 +10,7 @@ const MyBookings = () => {
   const [bookings, setBookings] = useState([]);
   const axiosSecure = useAxiosSecure();
 
-  // const url = `http://localhost:5000/bookings?email=${user?.email}`;
+  // const url = `https://car-doctor-server-mauve.vercel.app/bookings?email=${user?.email}`;
   const url = `/bookings?email=${user?.email}`;
 
   useEffect(() => {
@@ -39,7 +39,7 @@ const MyBookings = () => {
   const handleDeleteBookings = (id) => {
     const proceed = confirm("Are you sure this delete");
     if (proceed) {
-      fetch(`http://localhost:5000/bookings/${id}`, {
+      fetch(`https://car-doctor-server-mauve.vercel.app/bookings/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())
@@ -55,7 +55,7 @@ const MyBookings = () => {
   };
 
   const handleConfirmBooking = (id) => {
-    fetch(`http://localhost:5000/bookings/${id}`, {
+    fetch(`https://car-doctor-server-mauve.vercel.app/bookings/${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

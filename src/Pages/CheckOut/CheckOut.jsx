@@ -5,7 +5,6 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import "./CheckOut.css";
 import Swal from "sweetalert2";
 
-
 const CheckOut = () => {
   const { title, price, img, service_id } = useLoaderData();
   const { user } = useContext(AuthContext);
@@ -35,7 +34,7 @@ const CheckOut = () => {
     };
     console.log(order);
 
-    fetch("http://localhost:5000/bookings", {
+    fetch("https://car-doctor-server-mauve.vercel.app/bookings", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -61,7 +60,6 @@ const CheckOut = () => {
       </div>
       <div className="xl:py-[130px] lg:py-[110px] md:py-[90px] sm:py-[70px] py-[60px]">
         <div className="container-2">
-       
           <form
             onSubmit={handleConfirmOrder}
             className="px-16 py-16 bg-nu60 rounded-2xl"
