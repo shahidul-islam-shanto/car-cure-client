@@ -28,7 +28,7 @@ const MyBookings = () => {
     //   setBookings(res.data);
     // });
     //** system 2 end */
-
+    // axios
     //** system 3 start */
     axiosSecure.get(url).then((res) => {
       setBookings(res.data);
