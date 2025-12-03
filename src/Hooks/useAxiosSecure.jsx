@@ -17,9 +17,9 @@ const useAxiosSecure = () => {
         return res;
       },
       (error) => {
-        console.log("err in the track interceptor", error.response);
+        // console.log("err in the track interceptor", error.response);
         if (error.response.status === 401 || error.response.status === 403) {
-          console.log("log out the user");
+          // console.log("log out the user");
           logOut()
             .then((result) => {
               console.log(result.user);

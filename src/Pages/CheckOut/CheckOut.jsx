@@ -32,7 +32,7 @@ const CheckOut = () => {
       title: title,
       price: price,
     };
-    console.log(order);
+    // console.log(order);
 
     fetch("https://car-doctor-server-mauve.vercel.app/bookings", {
       method: "POST",
@@ -43,7 +43,7 @@ const CheckOut = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         if (data.insertedId) {
           Swal.fire({
             title: "Successfully!",

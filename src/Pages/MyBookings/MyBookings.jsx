@@ -45,7 +45,7 @@ const MyBookings = () => {
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
+          // console.log(data);
           if (data.deletedCount > 0) {
             alert("item delete");
             const remaining = bookings.filter((items) => items._id !== id);
@@ -65,7 +65,7 @@ const MyBookings = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         if (data.modifiedCount > 0) {
           // states
           const remaining = bookings.filter((items) => items._id !== id);

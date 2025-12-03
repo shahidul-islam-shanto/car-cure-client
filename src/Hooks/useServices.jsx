@@ -6,7 +6,7 @@ const useServices = () => {
     fetch("https://car-doctor-server-mauve.vercel.app/services")
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
 
         setServices(data);
       });

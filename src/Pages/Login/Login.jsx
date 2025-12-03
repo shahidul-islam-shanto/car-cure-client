@@ -22,7 +22,7 @@ const Login = () => {
 
     singEmailPassword(email, password)
       .then((result) => {
-        console.log(result.user);
+        // console.log(result.user);
         const logInUser = result.user;
         console.log(logInUser);
 

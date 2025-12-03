@@ -12,11 +12,11 @@ const Register = () => {
     e.preventDefault();
 
     const from = e.target;
-    const name = from.name.value;
+    // const name = from.name.value;
     const email = from.email.value;
     const password = from.password.value;
 
-    console.log(name, email, password);
+    // console.log(name, email, password);
 
     createUser(email, password)
       .then((result) => {

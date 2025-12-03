@@ -55,7 +55,7 @@ const TableBooks = ({
           ) : (
             <button
               onClick={() => {
-                console.log(_id);
+                // console.log(_id);
                 handleConfirmBooking(_id);
               }}
               className="px-4 py-2 bg-primary1 rounded-md text-nu10"
