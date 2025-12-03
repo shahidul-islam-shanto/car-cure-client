@@ -38,50 +38,50 @@ const MyBookings = () => {
   }, [url, axiosSecure]);
 
   const handleDeleteBookings = (id) => {
-    // const proceed = confirm("Are you sure this delete");
-    // if (proceed) {
-    //   fetch(`https://car-doctor-server-mauve.vercel.app/bookings/${id}`, {
-    //     method: "DELETE",
-    //   })
-    //     .then((res) => res.json())
-    //     .then((data) => {
-    //       console.log(data);
-    //       if (data.deletedCount > 0) {
-    //         alert("item delete");
-    //         const remaining = bookings.filter((items) => items._id !== id);
-    //         setBookings(remaining);
-    //       }
-    //     });
-    // }
+    const proceed = confirm("Are you sure this delete");
+    if (proceed) {
+      fetch(`https://car-doctor-server-mauve.vercel.app/bookings/${id}`, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          if (data.deletedCount > 0) {
+            alert("item delete");
+            const remaining = bookings.filter((items) => items._id !== id);
+            setBookings(remaining);
+          }
+        });
+    }
 
-    Swal.fire({
-      title: "Are you sure?",
-      text: "You won't be able to revert this!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        fetch(`https://car-doctor-server-mauve.vercel.app/bookings/${id}`, {
-          method: "DELETE",
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            console.log(data);
-            if (data.deletedCount > 0) {
-              Swal.fire({
-                title: "Deleted!",
-                text: "Your Coffee has been deleted.",
-                icon: "success",
-              });
-              const remaining = bookings.filter((items) => items._id !== id);
-              setBookings(remaining);
-            }
-          });
-      }
-    });
+    // Swal.fire({
+    //   title: "Are you sure?",
+    //   text: "You won't be able to revert this!",
+    //   icon: "warning",
+    //   showCancelButton: true,
+    //   confirmButtonColor: "#3085d6",
+    //   cancelButtonColor: "#d33",
+    //   confirmButtonText: "Yes, delete it!",
+    // }).then((result) => {
+    //   if (result.isConfirmed) {
+    //     fetch(`https://car-doctor-server-mauve.vercel.app/bookings/${id}`, {
+    //       method: "DELETE",
+    //     })
+    //       .then((res) => res.json())
+    //       .then((data) => {
+    //         console.log(data);
+    //         if (data.deletedCount > 0) {
+    //           Swal.fire({
+    //             title: "Deleted!",
+    //             text: "Your Coffee has been deleted.",
+    //             icon: "success",
+    //           });
+    //           const remaining = bookings.filter((items) => items._id !== id);
+    //           setBookings(remaining);
+    //         }
+    //       });
+    //   }
+    // });
   };
 
   const handleConfirmBooking = (id) => {
