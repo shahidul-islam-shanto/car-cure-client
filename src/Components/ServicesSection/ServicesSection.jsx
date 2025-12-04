@@ -15,7 +15,7 @@ const ServicesSection = () => {
   }, []);
 
   // const services = useServices();
-  // comment
+
   return (
     <>
       <div className="pb-20">
