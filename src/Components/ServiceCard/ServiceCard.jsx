@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import { FaArrowRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const ServiceCard = ({ services }) => {
   const { title, img, price, _id } = services;
+  const { loading } = useContext(AuthContext);
+
+  if (loading) {
+    return <span className="loading loading-spinner loading-xl"></span>;
+  }
 
   return (
     <>
