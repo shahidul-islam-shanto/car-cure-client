@@ -1,10 +1,12 @@
 // import React, { useEffect, useState } from "react";
+import { AuthContext } from "../../Provider/AuthProvider";
 import ServiceCard from "../ServiceCard/ServiceCard";
 // import useServices from "../../Hooks/useServices";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 const ServicesSection = () => {
   const [services, setServices] = useState([]);
+  const { loading } = useContext(AuthContext);
 
   useEffect(() => {
     fetch("https://car-doctor-server-mauve.vercel.app/services")
@@ -14,6 +16,10 @@ const ServicesSection = () => {
         setServices(data);
       });
   }, []);
+
+  if (loading) {
+    return <span className="loading loading-spinner loading-xl"></span>;
+  }
   // const services = useServices();
   return (
     <>

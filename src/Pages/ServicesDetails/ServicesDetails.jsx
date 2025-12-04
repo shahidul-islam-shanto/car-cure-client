@@ -1,11 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import "./ServicesDetails.css";
 import BredCrumb from "../../Components/BredCrumb/BredCrumb";
 import VideoPopup from "../../Components/VideoPopup/VideoPopup";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const ServicesDetails = () => {
   const serviceDetails = useLoaderData();
+  const { loading } = useContext(AuthContext);
+
+  if (loading) {
+    return <span className="loading loading-spinner loading-xl"></span>;
+  }
 
   const { _id, img, price } = serviceDetails;
 
